@@ -1,0 +1,7 @@
+<div *ngFor="let spaces of parkingSpaces" class="flex justify-center p-1">
+    <div [ngClass]="{'bg-red-300 ring-red-500' : spaces.isOccupied}"  class="bg-green-300 ring-8 ring-green-500  p-2 m-2 w-96 h-48 rounded flex justify-between min-w-96">
+        <div class="text-black inline-block p-1 text-4xl font-bold">
+            <label >{{spaces.id}}</label>      
+        </div>
+    </div>
+</div>

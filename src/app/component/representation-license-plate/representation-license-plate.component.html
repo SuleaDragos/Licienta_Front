@@ -1,0 +1,27 @@
+<div class="bg-purple-400 border-gray-600 p-2 m-2 rounded flex justify-between min-w-96">
+    <div class="bg-white text-black border-4  border-black inline-block p-1 m-2 rounded">
+        <div class="inline-block p-1 text-4xl font-bold ">
+            {{licensePlate.place}}
+        </div>
+        <div class="inline-block p-1 text-4xl font-bold">
+            {{licensePlate.number}}
+        </div>
+        <div class="inline-block p-1 text-4xl font-bold">
+            {{licensePlate.code}}
+        </div>
+    </div>
+    <div class="inline-block self-center">
+        <div class = "flex-col">
+            {{this.creationDateOnly}}
+        </div>
+        <div class = "flex-col grid justify-items-center font-bold text-3xl">
+        -
+        </div>
+        <div class = "flex-col">
+            {{this.expirationDateOnly}}
+        </div>
+    </div>
+    <div class="inline-block self-center ">
+        <p-button icon="pi pi-trash" (click)="deleteLicensePlate()" />
+    </div>
+</div>

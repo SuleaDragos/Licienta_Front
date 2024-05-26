@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "primeicons/primeicons.css";
+
+.p-button {
+    color: #c084fc;
+    background: #ffffff;
+    border: 1px solid #C4B5FD;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    border-radius: 6px;
+}
+
+.p-dropdown .p-dropdown-label {
+    background: #ffffff;
+    color: #000000;
+    border: 0 none;
+}
+
+.p-dropdown .p-dropdown-label.p-placeholder {
+    color: #000000;
+}

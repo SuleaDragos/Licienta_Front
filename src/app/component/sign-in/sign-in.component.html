@@ -1,0 +1,43 @@
+<div class="p-8">
+  <div>
+    <h2 class="mt-6 text-center text-3xl font-extrabold text-purple-400 p-8">
+      Autentificare
+    </h2>
+  </div>
+  <div class="p-8">
+    <div class="flex justify-center">
+      <div class="bg-purple-400 border-gray-600 p-2 m-2 rounded flex justify-center min-w-96">
+        <form [formGroup]="signInForm" class="space-y-6">
+          <div>
+            <label for="email" class="block text-sm font-medium text-white">
+              Adresă Email
+            </label>
+            <div class="mt-1 w-80">
+              <input pInputText id="email" type="email" class="w-80" autocomplete="email" required formControlName="email" />
+            </div>
+          </div>
+          <div>
+            <label for="password" class="block text-sm font-medium text-white">
+              Parolă
+            </label>
+            <div class="mt-1 w-80">
+              <input pInputText id="password" type="password" class="w-80" autocomplete="current-password" required 
+              formControlName="password" />
+            </div>
+          </div>
+          <div class="flex justify-center">
+            <p-button label="Autentificare" (click)="toDashboard()"/>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div *ngIf="failedLogin" class="flex justify-center">
+      <label class="text-red-800">Email-ul sau parola este greșită</label>
+  </div>
+  </div>
+  <div class="flex justify-center">
+    <label for="email" class="block text-sm font-medium text-white">
+      Nu ai un cont? <u role="button" (click)="toRegister()">Creazăți acum!</u>
+    </label>
+  </div>
+</div>
