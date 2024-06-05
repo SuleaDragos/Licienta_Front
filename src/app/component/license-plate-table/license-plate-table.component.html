@@ -1,10 +1,13 @@
 <div class="gap-3">
+    <h2 *ngIf="this.licensePlates.length === 0" class="mt-6 text-center text-3xl font-extrabold text-purple-400 p-8">
+        Nu există rezervări
+    </h2>
     <div *ngFor="let plate of licensePlates" class="flex justify-center">
         <app-representation-license-plate [licensePlate]="plate"
             (onDelete)="removePlateFromList($event)"></app-representation-license-plate>
     </div>
     <p-button (click)="showDialog()" label="Rezervă loc mașină" icon="pi pi-plus" class="flex justify-center" />
-    <p-button (click)="toParkingSpaceViewer()" label="Vizualizează locuri parcare" icon="pi pi-eye" class="flex justify-center p-2" />
+    <!-- <p-button (click)="toParkingSpaceViewer()" label="Vizualizează locuri parcare" icon="pi pi-eye" class="flex justify-center p-2" /> -->
 </div>
 <p-dialog header="Creare rezervare" [modal]="true" [(visible)]="creationDialogVisible" [style]="{ width: '45rem' }">
     <span class="p-text-secondary block mb-5">Vă rog introduceți datele mașinii și ale rezervării</span>
@@ -56,8 +59,8 @@
                 </div>
             </div>
             <div class="flex justify-left gap-3">
-                <p-button label="Cancel" severity="secondary" (click)="creationDialogVisible = false" class="p-2"/>
-                <p-button label="Save" (click)="saveLicensePlate()" [disabled]="licensePlateFormGroup.invalid" class="p-2"/>
+                <p-button label="Anulare" severity="secondary" (click)="creationDialogVisible = false" class="p-2"/>
+                <p-button label="Salvare" (click)="saveLicensePlate()" [disabled]="licensePlateFormGroup.invalid" class="p-2"/>
             </div>
         </form>
     </div>

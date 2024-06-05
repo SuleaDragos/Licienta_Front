@@ -104,7 +104,7 @@ export class LicensePlateTableComponent implements OnInit{
   saveLicensePlate(): void{
     if(this.licensePlateFormGroup.valid){
       this.licensePlateService.addLicensePlate(this.licensePlateFormGroup.value).subscribe({
-        next:(response) => {
+        next:(response: any) => {
           console.log(response);
           if(this.currentUser.id)
             this.licensePlateService.getLicensePlateByUser(this.currentUser.id).subscribe({
