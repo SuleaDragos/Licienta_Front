@@ -21,10 +21,14 @@ import { CalendarModule } from 'primeng/calendar';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { RegisterComponent } from './component/register/register.component';
 import { ParkingSpaceViewerComponent } from './component/parking-space-viewer/parking-space-viewer.component';
+import { TopbarComponent } from './component/topbar/topbar.component';
+import { AdminPageComponent } from './component/admin-page/admin-page.component';
+import { DataViewModule } from 'primeng/dataview';
 
 @NgModule({
-  declarations: [AppComponent, SignInComponent, DashboardComponent, LicensePlateTableComponent, RepresentationLicensePlateComponent, RegisterComponent, ParkingSpaceViewerComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, ReactiveFormsModule, BrowserAnimationsModule, TableModule, ButtonModule, DialogModule, DropdownModule, InputTextModule, CalendarModule, InputNumberModule],
+  declarations: [TopbarComponent, AppComponent, SignInComponent, DashboardComponent, LicensePlateTableComponent, RepresentationLicensePlateComponent, RegisterComponent, ParkingSpaceViewerComponent, AdminPageComponent],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, ReactiveFormsModule, BrowserAnimationsModule, TableModule, ButtonModule, DialogModule, DropdownModule, InputTextModule, CalendarModule, InputNumberModule, DataViewModule],
+  exports: [ButtonModule],
   providers: [ { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },],
   bootstrap: [AppComponent],
 })

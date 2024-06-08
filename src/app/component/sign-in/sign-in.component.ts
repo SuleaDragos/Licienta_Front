@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { SignInService } from '../../service/sign-in.service';
 import { jwtDecode } from 'jwt-decode';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserServiceService } from 'src/app/service/user-service.service';
+import { User } from 'src/app/model/user';
 
 @Component({
   selector: 'app-sign-in',
@@ -13,8 +15,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class SignInComponent implements OnInit {
   signInForm!: FormGroup;
   failedLogin: boolean = false;
+  role: string | undefined;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private signInService: SignInService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private signInService: SignInService, private userService: UserServiceService) { }
 
   ngOnInit(): void {
     localStorage.removeItem('jwtToken');
@@ -28,12 +31,16 @@ export class SignInComponent implements OnInit {
 
     this.signInService.signIn(this.signInForm.value).subscribe({
       next: (response) => {
-        const token = localStorage.getItem('jwtToken');
-        if (token) {
-          const decoded = jwtDecode(token) as any;
-          const roles = decoded.roles;
-          this.router.navigate(['/dashboard']);
-
+        const email = this.signInService.getCurrentUserEmail();
+        if (email) {
+          this.userService.getUserByEmail(email).subscribe({
+            next: (user: User) =>{
+              if(user.role == "USER")
+                this.router.navigate(['/dashboard']);
+              else if(user.role == "ADMIN")
+                this.router.navigate(['/admin'])
+          }
+          });
         }
       },
       error:(error) => { 
