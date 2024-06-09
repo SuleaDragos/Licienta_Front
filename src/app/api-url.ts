@@ -1,3 +1,3 @@
 export class ApiUrl {
-    public static value = 'http://localhost:8080/api/';
+    public static value = 'https://app-bariera-240608175954.azurewebsites.net/api/';
 }
